@@ -25,7 +25,7 @@
 
 ```bash
 # Clone repo
-$ git clone https://github.com/marcorichetta/cs50-project1.git
+$ git clone https://github.com/DanPmkr/CS50W-project1.git
 
 $ cd cs50-project1
 
