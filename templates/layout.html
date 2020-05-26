@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
     <link rel="stylesheet" href="../static/style.css">
@@ -32,12 +30,15 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light border">
-	<a href="#">  Home </a> | <a href="#">About </a>  | <a href="#"> Contact </a>  
+<nav class="navbar navbar-expand-lg navbar-light bg-light border">
+        <a class="navbar-brand" style="color:gr">
+           <a href="/homepage">  Home </a> | <a href="https://www.linkedin.com/in/daniel-odeh-42554550" target="_blank">About </a>  | 
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        </a>
+       		
         <div class="navbar-collapse collapse" id="navbarNavDropdown">
             {% if session.user_id %}
                 <ul class="navbar-nav mr-auto">
@@ -49,110 +50,32 @@
                 </ul>
             {% else %}
                 <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>                
+                    <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
                 </ul>
             {% endif %}
         </div>
     </nav>
-
+ 
+  <div class="jumbotron text-center">
+  <h2>WELCOME TO THE BEST BOOK REVIEW SITE!!</h2>
+	</div>
+	
     {% if get_flashed_messages() %}
         <div class="alert alert-info text-center" role="alert">
             {{ get_flashed_messages() | join(" ") }}
         </div>
     {% endif %}
 
+    <main class="container p-5">
+        {% block content %}
+        {% endblock %}
+    </main>
+	
+   
     
-	<div class="jumbotron text-center">
-  <h2>WELCOME TO THE BEST BOOK REVIEW SITE!!</h2>
-  <p>Register and tell us what book titles you’ve enjoyed in the past, and we’ll give you the most insightful recommendations.</p> 
-	</div>
+	
  
-	<section>
-	<div class="d-flex flex-column align-items-center justify-content-center h-100vh">  
-	<h3 class="mt-5 mb-3">Click here to Register or Login </h3>
-	
-	<!-- Button to Open the Modal -->
-	<button type="button" class="btn btn-primary text-uppercase px-5 py-2" data-toggle="modal" data-target="#myModal">
-		Register / Login </button>
-		</div>
-	
-  <!-- The Modal -->
-  <div class="modal fade" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Login </h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-		<form role="form" action="/login" method="post">
-            <div class="form-group">
-              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-              <input autocomplete="off" type="text" class="form-control" id="usernamelog" placeholder="Enter Username">
-            </div>
-            <div class="form-group">
-              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-              <input type="password" class="form-control" id="passwordlog" placeholder="Enter password">
-            </div>
-            <div class="checkbox">
-              <label><input type="checkbox" value="" checked>Remember me</label>
-            </div>
-			 <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
-          </form>
-        </div>
-		
-		         <!-- Modal footer -->
-        <div class="modal-footer">
-		<p> Not a member? Click to register </p>
-          <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#myModal2">Register</button>
-        </div>
-        </div>
-      </div>
-    </div>
-    
-	<div class="modal fade" id="myModal2">
-		<div class="modal-dialog">
-			<div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Register</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-          <form role="form" action="/register" method="post">
-            <div class="form-group">
-              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-              <input autocomplete="off" type="text" class="form-control" id="usernamereg" placeholder="Username">
-            </div>
-            <div class="form-group">
-              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-              <input type="password" class="form-control" id="passwordreg" placeholder="Enter password">
-            </div>
-			<div class="form-group">
-              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-              <input type="password" class="form-control" id="confirmation" placeholder="Confirm password">
-            </div>
-           
-              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Register</button>
-          </form>
-             </div>
-			 
-        <!-- Modal footer -->
-        <div class="modal-footer">
-		   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
-       </div>
-    </div>
-   </div>
-  </section> 
-
 <!-- Footer -->
 	<footer>
 	<div class="w3-third w3-serif">
@@ -167,7 +90,7 @@
     </div>
 	
 	 <div class="w3-third">
-      <p>Powered by <a href="#" target="_blank">Daniel Odeh </a> (c)2020 </p>
+      <p>Powered by <a href="https://www.linkedin.com/in/daniel-odeh-42554550" target="_blank">Daniel Odeh </a> (c)2020 </p>
   	</div>
 	</footer>
    
