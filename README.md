@@ -7,14 +7,6 @@
 
 ### https://odehbookreview.herokuapp.com/
 
-![](https://i.imgur.com/mB3cLV1.png)
-
-
-![](https://i.imgur.com/MgO93MJ.png)
-
-
-![](https://i.imgur.com/Zy7C3Oq.png)
-
 ## Usage
 
 * Register
